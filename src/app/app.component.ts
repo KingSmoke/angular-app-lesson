@@ -13,7 +13,7 @@ import { trigger,state,style,transition,animate,keyframes } from '@angular/anima
       background:lightgray;
       margin:100px auto;
       text-align:center;
-      padding:200px;
+      padding:20px;
       font-size:1.5em;
     }
   `],//end styles
@@ -27,7 +27,9 @@ import { trigger,state,style,transition,animate,keyframes } from '@angular/anima
       state('large', style({
         transform: 'scale(1.2)',
       })),// end state
-      transition('small <=> large', animate('300ms ease-in')),//end transition
+      transition('small <=> large', animate('300ms ease-in', style({
+        transform: 'translateY(40px)'
+      }))),//end transition
     ]),// end trigger
   ]//end animations
 })//end @component
