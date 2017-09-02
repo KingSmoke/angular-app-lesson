@@ -1,13 +1,11 @@
 import { Component } from '@angular/core';
+import { MyDataService } from './my-data.service';
 
 @Component({
   selector: 'app-root',
   template: `
 
-  <h1 [style.color]="titleStyle ? 'green' : 'pink'">My code combining Event binding and CSS Style binding</h1>
-  <p>This is a little test that I thought up.</p>
-  <button (click)="goPink()">Pink</button>
-  <button (click)="goGreen()">Green</button>
+  <p>{{ someProperty }}</p>
     
     `,
 
@@ -19,13 +17,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  titleStyle = true;
+  constructor(private dataService:MyDataService) {
 
-  goPink() {
-    this.titleStyle = false;
   }
-  goGreen() {
-    this.titleStyle = true;
+
+  someProperty:string = '';
+
+  ngOnInit() {
+    console.log(this.dataService.cars);
+
+    this.someProperty = this.dataService.myDataMethod();
   }
 
 }
