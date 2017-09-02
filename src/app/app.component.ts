@@ -27,9 +27,12 @@ import { trigger,state,style,transition,animate,keyframes } from '@angular/anima
       state('large', style({
         transform: 'scale(1.2)',
       })),// end state
-      transition('small <=> large', animate('300ms ease-in', style({
-        transform: 'translateY(40px)'
-      }))),//end transition
+      transition('small <=> large', animate('300ms ease-in', keyframes([
+        style({opacity:0, transform: 'translateY(-75%)', offset:0}),//end style
+        style({opacity:1, transform: 'translateY(35px)', offset:.5}),//end style
+        style({opacity:1, transform: 'translateY(0)', offset:1}),//end style
+      ])//and keyframes
+    )),//end transition
     ]),// end trigger
   ]//end animations
 })//end @component
